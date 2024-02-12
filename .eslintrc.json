@@ -5,6 +5,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
+  "ignorePatterns": ["clean-script.js"],
   "root": true,
   "env": {
     "node": true

@@ -4,8 +4,8 @@
   "description": "rs-school-nodejs-crud-api",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --inspect src/app.ts",
-    "start": "node --loader ts-node/esm --inspect src/app.ts"
+    "start:dev": "nodemon --inspect src/app.ts",
+    "start:prod": "node clean-script.js & tsc & node .build/app.js"
   },
   "repository": {
     "type": "git",

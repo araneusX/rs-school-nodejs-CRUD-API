@@ -130,3 +130,6 @@ dist
 
 # ide
 .vscode
+
+#build
+.build
