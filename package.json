@@ -4,7 +4,7 @@
   "description": "rs-school-nodejs-crud-api",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --loader ts-node/esm --inspect src/app.ts",
+    "dev": "nodemon --inspect src/app.ts",
     "start": "node --loader ts-node/esm --inspect src/app.ts"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "dotenv": "^16.4.2",
     "uuid": "^9.0.1"
   }
 }

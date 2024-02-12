@@ -1,7 +1,6 @@
-import { UserController, UserService, UserStorage } from './modules/index.js';
-import { createServer } from './utils/createServer.js';
+import { UserController, UserService, UserStorage, Server } from './modules/index.js';
 
-createServer({
+new Server({
   users: new UserController({
     service: new UserService({
       storage: new UserStorage(),

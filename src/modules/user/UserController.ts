@@ -3,6 +3,7 @@ import { HttpCode } from '../../constants/HttpCode.js';
 import { Controller, Method, Service, StorageRecord } from '../../types.js';
 import { InternalErrorMessages } from '../../constants/InternalErrorMessages.js';
 import { parseBody } from '../../utils/parseBody.js';
+import { InternalError } from '../index.js';
 
 export class UserController<T extends StorageRecord> implements Controller {
   private service: Service<T>;
@@ -29,9 +30,7 @@ export class UserController<T extends StorageRecord> implements Controller {
       .filter((value) => value);
 
     if (segments.length > 1) {
-      res.writeHead(HttpCode.NotFound);
-      res.end(InternalErrorMessages.ResourceNotExist);
-      return;
+      throw new InternalError({ code: HttpCode.NotFound, message: InternalErrorMessages.ResourceNotExist });
     }
 
     if (!segments.length) {
@@ -55,9 +54,7 @@ export class UserController<T extends StorageRecord> implements Controller {
           break;
         }
         default:
-          res.writeHead(HttpCode.MethodNotAllowed);
-          res.end(InternalErrorMessages.MethodNotAllowed);
-          break;
+          throw new InternalError({ code: HttpCode.MethodNotAllowed, message: InternalErrorMessages.MethodNotAllowed });
       }
 
       return;
@@ -91,9 +88,7 @@ export class UserController<T extends StorageRecord> implements Controller {
         res.end();
         break;
       default:
-        res.writeHead(HttpCode.MethodNotAllowed);
-        res.end(InternalErrorMessages.MethodNotAllowed);
-        break;
+        throw new InternalError({ code: HttpCode.MethodNotAllowed, message: InternalErrorMessages.MethodNotAllowed });
     }
   }
 }
