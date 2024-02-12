@@ -19,7 +19,7 @@ export const validateUserCreateObject = (data?: Record<string, unknown> | null):
 
   const userData = data as Partial<Record<keyof CreateUserData, unknown>>;
   const isValidUserName = typeof userData.username === 'string';
-  const isValidAge = typeof userData.age === 'string';
+  const isValidAge = typeof userData.age === 'number';
   const isValidHobbies = validateHobbies(data);
 
   return isValidUserName && isValidAge && isValidHobbies;
@@ -32,7 +32,7 @@ export const validateUserUpdateObject = (data?: Record<string, unknown> | null):
 
   const userData = data as Partial<Record<keyof UpdateUserData, unknown>>;
   const isValidUserName = !('username' in data) || typeof userData.username === 'string';
-  const isValidAge = !('age' in data) || typeof userData.age === 'string';
+  const isValidAge = !('age' in data) || typeof userData.age === 'number';
   const isValidHobbies = validateHobbies(data);
 
   return isValidUserName && isValidAge && isValidHobbies;

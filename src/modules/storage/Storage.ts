@@ -59,4 +59,8 @@ export abstract class Storage<TRecord extends StorageRecord> implements StorageT
       ),
     );
   }
+
+  static cleanStorageData() {
+    Object.keys(globalStorage).forEach((key) => globalStorage[key].clear());
+  }
 }
